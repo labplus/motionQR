@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>motionQR</title>
+<link rel="stylesheet" type="text/css" href="styles.css"></link>
+</head>
+
+<body>
+	<!-- title page -->
+	<div class="page box center vertical" id="p1">
+		<h1>motionQR</h1>
+
+		<div id="settings">
+			<dl>
+			<dt>source: </dt><dd><input type="file" id="input" onchange="handleFiles(this.files)"></dd>
+			<dt style="display:none">encode: </dt><dd style="display:none;"><input type="encode" id="encode" value="2" style="width:4em">(base64:1 raw binary:2)</dd>
+			<dt>mode: </dt><dd><input type="number" id="mode" value="4" style="width:4em"> (8bit binary:4 Alpha-numeric: 2)</dd>
+			<dt>version:</dt><dd><input type="number" id="version" value="24" style="width:4em"> (0 - 40)</dd>
+			<dt>errorCorrection:</dt><dd><input type="number" id="errorCorrection" value="1" style="width:4em"> (L:1 M:0 Q:3 H:2)</dd>
+			<dt>fps: </dt><dd><input type="number" id="fps" value="6" style="width:4em"> (frame per second)</dd>
+			</dl>
+		</div>
+	</div>
+
+	<!-- photo page -->
+	<div class="page box center" id="originalimage" style="display:none;">
+	</div>
+
+	<!-- qr page -->
+	<div class="page box center" id="singleqr" style="display:none;">
+	</div>
+
+	<!-- motionQR page -->
+	<div class="page box center" id="p4" style="display:none;" >
+		<div id="test"></div>
+	</div>
+
+	<!-- closing page -->
+	<div class="page box center" id="p4" style="display:none;" >
+		<div id="">Thank you!</div>
+	</div>
+</body>
+
+<script src="jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="jsqr-0.2.js" type="text/javascript"></script>
+<script src="base64.js"></script>
+<script src="script.js"></script>
+
+</html>
+
+
+

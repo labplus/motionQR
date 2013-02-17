@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+div#test{
+	position:relative;
+	border: solid 1px silver;
+	margin:8px;
+}
+
+div#test img{
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+</style>
+
+</head>
+<body>
+
+	<div id="test"></div>
+
+</body>
+
+<script src="jquery-1.9.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+		var fillZero = function(num, degit){
+			var text = '';
+			for(var i = degit - 1; i > 0; i--){
+				var d = Math.pow(10, i);
+				if(num < d){
+					text += '0';
+				}
+			}
+			text += num;
+			return num;
+		}
+
+	var temp = fillZero(16, 3);
+	var temp = fillZero(342, 3);
+	var temp = fillZero(0, 3);
+
+	var imgs = [];
+	var ds = [];
+	for(var i=0; i < 18; i++){
+		var d = new $.Deferred;
+		var src = '1_' + i + '.png';
+		var img = new Image;
+		img.onload = (function(d){
+			var dfd = d;
+			return function(){
+				console.log(this.src + ' is loaded.')
+				dfd.resolve();
+			}
+		})(d);
+		img.src = src;
+		imgs.push(img);
+	//	$('#test').append(img);
+		ds.push(d.promise());
+	}
+
+	$.when.apply(null, ds).done(function(){
+		console.log('all images are loaded.');
+		for(var i = 0; i < imgs.length; i++){
+			var img = imgs[i];
+			$('#test').append(img);
+		}
+	}).fail(function(){
+		console.log('failed.');
+	})
+
+	var index = 0;
+	setInterval(function(){
+		var oldindex = index;
+		index = (index + 1) % imgs.length;
+		var oldimg = imgs[oldindex];
+		var nextimg = imgs[index];
+		$(oldimg).hide();
+		$(nextimg).show();
+	}, 100);
+});
+
+
+
+</script>
+
+
+</html>
+

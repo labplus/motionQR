@@ -1,0 +1,68 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	font-family:Futura;
+}
+.page{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:100%;
+}
+
+.box{
+	display:-webkit-box;
+}
+.fill{
+	-webkit-box-flex:1;
+}
+
+.vertical{
+	-webkit-box-orient:vertical;
+}
+.horizontal{
+	-webkit-box-orient:horizontal;
+}
+.center{
+	-webkit-box-align:center;
+	-webkit-box-pack:center;
+}
+
+#originalimage img{
+	border:5px solid #fff;
+	overflow:hidden;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.597656) 6px 6px 24px 0px;
+-webkit-transform: rotateZ(2deg);
+}
+
+h1{
+	font-size:96pt;
+}
+
+#settings{
+	font-size:16pt;
+	color:#888;
+	margin:1em;
+	padding:1em;
+}
+
+dl{
+	display:block;
+	width:720px;
+	line-height:1.2em;
+}
+dt{
+	float:left;
+	width:8em;
+	text-align:right;
+	margin-right:1em;
+}
+
+input{
+	font-size:12pt;
+}
+
+
